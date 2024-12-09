@@ -118,41 +118,11 @@ exporter_disk_used_bytes{mountpoint="/"}
 
 ### Использование с Docker
 
-1. **Создайте `Dockerfile`:**
+Для запуска всего решения можно просто поднять контейнер:
 
-   ```dockerfile
-   FROM golang:1.20-alpine
-
-   WORKDIR /app
-
-   COPY go.mod go.sum ./
-   RUN go mod download
-
-   COPY ./cmd/exporter ./cmd/exporter
-   COPY ./pkg ./pkg
-
-   RUN go build -o exporter ./cmd/exporter
-
-   EXPOSE 8080
-
-   ENV EXPORTER_HOST=0.0.0.0
-   ENV EXPORTER_PORT=8080
-   ENV EXPORTER_METRICS_INTERVAL=10
-
-   CMD ["./exporter"]
-   ```
-
-2. **Соберите образ:**
-
-   ```bash
-   docker build -t go-exporter .
-   ```
-
-3. **Запустите контейнер:**
-
-   ```bash
-   docker run -d -p 8080:8080 --name my-go-exporter go-exporter
-   ```
+```bash
+docker-compose up --build
+```
 
 ## Интеграция с Prometheus
 
