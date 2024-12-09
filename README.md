@@ -118,7 +118,7 @@ exporter_disk_used_bytes{mountpoint="/"}
 
 ### Использование с Docker
 
-Для запуска всего решения можно просто поднять контейнер:
+Для запуска Графаны + Прометеуса можно просто поднять контейнер:
 
 ```bash
 docker-compose up --build
@@ -126,7 +126,7 @@ docker-compose up --build
 
 ## Интеграция с Prometheus
 
-Добавьте в конфигурацию Prometheus следующий job:
+Отредактируйте prometheus.yml
 
 ```yaml
 scrape_configs:
